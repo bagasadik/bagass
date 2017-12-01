@@ -93,8 +93,8 @@ const CommentAndLike = async function(session, accountId, text){
 		if (result.length > 0) {
 			const Follow = Client.Relationship.create(session, accountId);
 			const doComment = Client.Comment.create(session, result[0].params.id, text);
-			await Promise.all([Follow,doComment,doLike]);
-			return chalk`{bold.green SUKSES [Follow,Comment,Like]} | ${text}`;
+			await Promise.all([Follow,doComment]);
+			return chalk`{bold.green SUKSES [Follow,Comment]} | ${text}`;
 		}
 	} catch (err) {
 		return chalk`{bold.red GAGAL}`;
