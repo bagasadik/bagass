@@ -93,7 +93,6 @@ const CommentAndLike = async function(session, accountId, text){
 		if (result.length > 0) {
 			const Follow = Client.Relationship.create(session, accountId);
 			const doComment = Client.Comment.create(session, result[0].params.id, text);
-			const doLike =  Client.Like.create(session, result[0].params.id);
 			await Promise.all([Follow,doComment,doLike]);
 			return chalk`{bold.green SUKSES [Follow,Comment,Like]} | ${text}`;
 		}
